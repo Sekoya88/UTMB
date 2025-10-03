@@ -1,0 +1,49 @@
+# Dependencies
+node_modules
+npm-debug.log*
+
+# Build outputs
+dist
+dist-ssr
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Docs
+*.md
+!README.md
+
+# IDE
+.vscode
+.idea
+*.swp
+.DS_Store
+
+# Environment
+.env
+.env.local
+
+# Logs
+logs
+*.log
+
+# Data (téléchargé séparément)
+data/
+*.csv
+
+# Python / uv
+__pycache__/
+*.py[cod]
+.venv/
+.kaggle/
+uv.lock
+.python-version
+
+# OS
+Thumbs.db

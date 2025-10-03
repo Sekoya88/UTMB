@@ -1,0 +1,91 @@
+/* Dual Range Slider Styles - FIXED */
+
+/* Base styles for range inputs */
+.range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  outline: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Webkit slider thumb (Chrome, Safari, Edge) */
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid white;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.range-slider::-webkit-slider-thumb:active {
+  transform: scale(1.05);
+}
+
+/* Firefox slider thumb */
+.range-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid white;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.range-slider::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.range-slider::-moz-range-thumb:active {
+  transform: scale(1.05);
+}
+
+/* Min slider thumb color (blue) */
+.range-slider-min::-webkit-slider-thumb {
+  background-color: #0066CC;
+}
+
+.range-slider-min::-moz-range-thumb {
+  background-color: #0066CC;
+}
+
+/* Max slider thumb color (orange) */
+.range-slider-max::-webkit-slider-thumb {
+  background-color: #FF6B35;
+}
+
+.range-slider-max::-moz-range-thumb {
+  background-color: #FF6B35;
+}
+
+/* Remove default track styling */
+.range-slider::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: transparent;
+}
+
+.range-slider::-moz-range-track {
+  background: transparent;
+  height: 8px;
+  border: none;
+}

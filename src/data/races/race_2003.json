@@ -1,0 +1,676 @@
+{
+  "year": 2003,
+  "participants": [
+    {
+      "bib": "47",
+      "name": "SHERPA Dachhiri-Dawa",
+      "team": "TEAM FILA",
+      "category": "SEH",
+      "rank": "1",
+      "nationality": "NP",
+      "time": "20:05:58",
+      "timediff": "00:00.0"
+    },
+    {
+      "bib": "8",
+      "name": "GAYLORD Topher",
+      "team": "THE NORTH FACE",
+      "category": "SEH",
+      "rank": "2",
+      "nationality": "US",
+      "time": "22:15:17",
+      "timediff": "09:19.0"
+    },
+    {
+      "bib": "301",
+      "name": "SYBROWSKY Brandon",
+      "team": "TEAM MONTRAIL",
+      "category": "SEH",
+      "rank": "2",
+      "nationality": "US",
+      "time": "22:15:17",
+      "timediff": "09:19.0"
+    },
+    {
+      "bib": "375",
+      "name": "SCHNEIDER Giselher",
+      "team": "LG-CHIEMGAU S\u00dcD",
+      "category": "V1H",
+      "rank": "1",
+      "nationality": "DE",
+      "time": "23:37:17",
+      "timediff": "31:19.0"
+    },
+    {
+      "bib": "457",
+      "name": "SCHWEIZER Werner",
+      "team": "FOULEE GLAND",
+      "category": "V3H",
+      "rank": "1",
+      "nationality": "CH",
+      "time": "24:18:36",
+      "timediff": "12:38.0"
+    },
+    {
+      "bib": "444",
+      "name": "BOEBION Daniel",
+      "team": "",
+      "category": "V2H",
+      "rank": "1",
+      "nationality": "Fr",
+      "time": "24:51:42",
+      "timediff": "45:44.0"
+    },
+    {
+      "bib": "469",
+      "name": "GONDAS Ondrej",
+      "team": "SV JENESIEN RAIFFEISEN",
+      "category": "V2H",
+      "rank": "2",
+      "nationality": "SI",
+      "time": "24:51:42",
+      "timediff": "45:44.0"
+    },
+    {
+      "bib": "194",
+      "name": "HOBLEA Fabien",
+      "team": "CHAMBERY TRIATHLON",
+      "category": "SEH",
+      "rank": "4",
+      "nationality": "Fr",
+      "time": "24:53:43",
+      "timediff": "47:45.0"
+    },
+    {
+      "bib": "543",
+      "name": "COUMENGES Regis",
+      "team": "TRI OLYMPIQUE CLUB CESSONNAIS",
+      "category": "SEH",
+      "rank": "5",
+      "nationality": "FR",
+      "time": "25:33:41",
+      "timediff": "27:43.0"
+    },
+    {
+      "bib": "569",
+      "name": "TECHER Henri",
+      "team": "GAZELLES &amp; GALOPINS",
+      "category": "SEH",
+      "rank": "6",
+      "nationality": "FR",
+      "time": "26:32:08",
+      "timediff": "26:10.0"
+    },
+    {
+      "bib": "740",
+      "name": "FAVRE-FELIX Lionel",
+      "team": "",
+      "category": "SEH",
+      "rank": "7",
+      "nationality": "FR",
+      "time": "26:35:54",
+      "timediff": "29:56.0"
+    },
+    {
+      "bib": "17",
+      "name": "BONNOTTE Eric",
+      "team": "UFO",
+      "category": "SEH",
+      "rank": "8",
+      "nationality": "FR",
+      "time": "27:26:27",
+      "timediff": "20:29.0"
+    },
+    {
+      "bib": "651",
+      "name": "PIGEAULT Jean-Luc",
+      "team": "COURIR A VOREPPE",
+      "category": "V1H",
+      "rank": "2",
+      "nationality": "FR",
+      "time": "27:26:27",
+      "timediff": "20:29.0"
+    },
+    {
+      "bib": "413",
+      "name": "BOUDAY Luc",
+      "team": "CNP PONTARLIER",
+      "category": "V2H",
+      "rank": "3",
+      "nationality": "FR",
+      "time": "27:44:06",
+      "timediff": "38:08.0"
+    },
+    {
+      "bib": "510",
+      "name": "LESEURRE Jerome",
+      "team": "",
+      "category": "SEH",
+      "rank": "9",
+      "nationality": "FR",
+      "time": "27:45:12",
+      "timediff": "39:14.0"
+    },
+    {
+      "bib": "203",
+      "name": "VUILLEMENOT Roland",
+      "team": "ULTRA MAARATHON FRANCE",
+      "category": "V2H",
+      "rank": "4",
+      "nationality": "Fr",
+      "time": "28:18:54",
+      "timediff": "12:56.0"
+    },
+    {
+      "bib": "1",
+      "name": "POLETTI Michel",
+      "team": "UFO / CHAMONIX-MONT-BLANC-MARATHON",
+      "category": "V1H",
+      "rank": "3",
+      "nationality": "FR",
+      "time": "28:31:02",
+      "timediff": "25:04.0"
+    },
+    {
+      "bib": "71",
+      "name": "BERTONE Silvio",
+      "team": "ATLETICA RIVOLI S.GIUSEPPE",
+      "category": "SEH",
+      "rank": "10",
+      "nationality": "IT",
+      "time": "28:31:02",
+      "timediff": "25:04.0"
+    },
+    {
+      "bib": "351",
+      "name": "DELEMONTEZ Didier",
+      "team": "FAUCIGNY ATHLETIC CLUB",
+      "category": "V1H",
+      "rank": "4",
+      "nationality": "FR",
+      "time": "29:02:07",
+      "timediff": "56:09.0"
+    },
+    {
+      "bib": "161",
+      "name": "CORDIER Eric",
+      "team": "",
+      "category": "V1H",
+      "rank": "5",
+      "nationality": "Fr",
+      "time": "29:15:53",
+      "timediff": "09:55.0"
+    },
+    {
+      "bib": "426",
+      "name": "DESCHAMPS Patrick",
+      "team": "PRAZ MONTAGNE",
+      "category": "V2H",
+      "rank": "5",
+      "nationality": "FR",
+      "time": "29:15:53",
+      "timediff": "09:55.0"
+    },
+    {
+      "bib": "499",
+      "name": "ANTOINE Bernard",
+      "team": "ASRHV",
+      "category": "SEH",
+      "rank": "11",
+      "nationality": "Fr",
+      "time": "29:15:53",
+      "timediff": "09:55.0"
+    },
+    {
+      "bib": "616",
+      "name": "STICKLAND Rex",
+      "team": "INVICTA EAST KENT AC",
+      "category": "V2H",
+      "rank": "6",
+      "nationality": "GB",
+      "time": "29:27:18",
+      "timediff": "21:20.0"
+    },
+    {
+      "bib": "303",
+      "name": "MOEHL Kristin",
+      "team": "TEAM MONTRAIL",
+      "category": "SEF",
+      "rank": "1",
+      "nationality": "US",
+      "time": "29:38:23",
+      "timediff": "32:25.0"
+    },
+    {
+      "bib": "596",
+      "name": "SAULET Bruno",
+      "team": "",
+      "category": "SEH",
+      "rank": "12",
+      "nationality": "Fr",
+      "time": "29:40:18",
+      "timediff": "34:20.0"
+    },
+    {
+      "bib": "66",
+      "name": "DELAUNAY Fabrice",
+      "team": "UFO",
+      "category": "SEH",
+      "rank": "13",
+      "nationality": "FR",
+      "time": "30:47:11",
+      "timediff": "41:13.0"
+    },
+    {
+      "bib": "35",
+      "name": "WEISS Georg",
+      "team": "LG Rosbach-Rodheim",
+      "category": "V1H",
+      "rank": "6",
+      "nationality": "DE",
+      "time": "30:59:18",
+      "timediff": "53:20.0"
+    },
+    {
+      "bib": "175",
+      "name": "LALY Gery",
+      "team": "",
+      "category": "SEH",
+      "rank": "14",
+      "nationality": "Fr",
+      "time": "31:14:49",
+      "timediff": "08:51.0"
+    },
+    {
+      "bib": "32",
+      "name": "ARTIGAS Josep",
+      "team": "",
+      "category": "V1H",
+      "rank": "7",
+      "nationality": "ES",
+      "time": "31:31:52",
+      "timediff": "25:54.0"
+    },
+    {
+      "bib": "63",
+      "name": "LENAERTS Edwin",
+      "team": "LES COUREURS CELESTES",
+      "category": "SEH",
+      "rank": "15",
+      "nationality": "BE",
+      "time": "31:31:52",
+      "timediff": "25:54.0"
+    },
+    {
+      "bib": "196",
+      "name": "BAUER Daniel",
+      "team": "FFME DU VIGAN (club escalade)",
+      "category": "SEH",
+      "rank": "16",
+      "nationality": "FR",
+      "time": "32:13:00",
+      "timediff": "07:02.0"
+    },
+    {
+      "bib": "222",
+      "name": "GROSLAMBERT Daniel",
+      "team": "ESPACE MORTEAU",
+      "category": "V1H",
+      "rank": "8",
+      "nationality": "Fr",
+      "time": "32:13:00",
+      "timediff": "07:02.0"
+    },
+    {
+      "bib": "721",
+      "name": "BAIS-LE-ROUX Anne-Marie",
+      "team": "",
+      "category": "V1F",
+      "rank": "1",
+      "nationality": "Fr",
+      "time": "32:19:36",
+      "timediff": "13:38.0"
+    },
+    {
+      "bib": "111",
+      "name": "SCHRAMECK Michel",
+      "team": "PEACE MESSENGERS",
+      "category": "SEH",
+      "rank": "17",
+      "nationality": "Fr",
+      "time": "32:44:55",
+      "timediff": "38:57.0"
+    },
+    {
+      "bib": "639",
+      "name": "ADDIS ANDREW",
+      "team": "MACCLESFIELD HARRIERS",
+      "category": "V1H",
+      "rank": "9",
+      "nationality": "GB",
+      "time": "32:48:46",
+      "timediff": "42:48.0"
+    },
+    {
+      "bib": "690",
+      "name": "RINGEVAL Bruno",
+      "team": "UFO",
+      "category": "V1H",
+      "rank": "10",
+      "nationality": "FR",
+      "time": "32:56:51",
+      "timediff": "50:53.0"
+    },
+    {
+      "bib": "384",
+      "name": "GAUTHIER Monique",
+      "team": "USO CHELLES JOGGING",
+      "category": "V1F",
+      "rank": "2",
+      "nationality": "Fr",
+      "time": "33:03:55",
+      "timediff": "57:57.0"
+    },
+    {
+      "bib": "617",
+      "name": "MATTONE Valentino",
+      "team": "ALBA DOCILIA",
+      "category": "V2H",
+      "rank": "7",
+      "nationality": "IT",
+      "time": "33:03:55",
+      "timediff": "57:57.0"
+    },
+    {
+      "bib": "672",
+      "name": "CABELLOS Marie-Laure",
+      "team": "",
+      "category": "V1F",
+      "rank": "3",
+      "nationality": "Fr",
+      "time": "33:45:14",
+      "timediff": "39:16.0"
+    },
+    {
+      "bib": "494",
+      "name": "LESERVOISIER patrick",
+      "team": "OXYGENE -  LAYDERNIER",
+      "category": "SEH",
+      "rank": "18",
+      "nationality": "FR",
+      "time": "34:10:25",
+      "timediff": "04:27.0"
+    },
+    {
+      "bib": "173",
+      "name": "LAPERROUSAZ Pascal",
+      "team": "THONON CAP ENDURANCE",
+      "category": "V1H",
+      "rank": "11",
+      "nationality": "FR",
+      "time": "34:17:04",
+      "timediff": "11:06.0"
+    },
+    {
+      "bib": "621",
+      "name": "COURTIADE Michel",
+      "team": "",
+      "category": "V1H",
+      "rank": "12",
+      "nationality": "Fr",
+      "time": "34:17:21",
+      "timediff": "11:23.0"
+    },
+    {
+      "bib": "675",
+      "name": "BARICHELLO Gastone",
+      "team": "CASTAGNOLI - ATLETICA VIMAR MAROSTICA",
+      "category": "V1H",
+      "rank": "13",
+      "nationality": "IT",
+      "time": "34:19:21",
+      "timediff": "13:23.0"
+    },
+    {
+      "bib": "455",
+      "name": "MOYSAN Yann",
+      "team": "",
+      "category": "SEH",
+      "rank": "19",
+      "nationality": "Fr",
+      "time": "34:22:47",
+      "timediff": "16:49.0"
+    },
+    {
+      "bib": "304",
+      "name": "WOLTER-ROESSLER Tom",
+      "team": "",
+      "category": "SEH",
+      "rank": "20",
+      "nationality": "DE",
+      "time": "34:22:52",
+      "timediff": "16:54.0"
+    },
+    {
+      "bib": "488",
+      "name": "BRUNNER Ludwig",
+      "team": "SV JENESIEN RAIFFEISEN",
+      "category": "V1H",
+      "rank": "14",
+      "nationality": "IT",
+      "time": "34:25:07",
+      "timediff": "19:09.0"
+    },
+    {
+      "bib": "515",
+      "name": "JUDA Martina",
+      "team": "SV JENESIEN RAIFFEISEN",
+      "category": "SEF",
+      "rank": "2",
+      "nationality": "CZ",
+      "time": "34:25:07",
+      "timediff": "19:09.0"
+    },
+    {
+      "bib": "564",
+      "name": "MARBACH  Hubert",
+      "team": "LES BAROUDEURS DU CENTRE-ALSACE",
+      "category": "V2H",
+      "rank": "8",
+      "nationality": "FR",
+      "time": "34:29:27",
+      "timediff": "23:29.0"
+    },
+    {
+      "bib": "4",
+      "name": "MARMIER Jean-Claude",
+      "team": "CMBM",
+      "category": "V3H",
+      "rank": "2",
+      "nationality": "FR",
+      "time": "34:45:12",
+      "timediff": "39:14.0"
+    },
+    {
+      "bib": "263",
+      "name": "MARTIN Eric",
+      "team": "",
+      "category": "SEH",
+      "rank": "21",
+      "nationality": "Fr",
+      "time": "34:46:32",
+      "timediff": "40:34.0"
+    },
+    {
+      "bib": "104",
+      "name": "WARENGHEM Roger",
+      "team": "MARATHON DE SAVOIE",
+      "category": "V1H",
+      "rank": "15",
+      "nationality": "Fr",
+      "time": "34:46:33",
+      "timediff": "40:35.0"
+    },
+    {
+      "bib": "567",
+      "name": "KAYSER Michel",
+      "team": "LES BAROUDEURS DU CENTRE-ALSACE",
+      "category": "V1H",
+      "rank": "16",
+      "nationality": "FR",
+      "time": "34:51:30",
+      "timediff": "45:32.0"
+    },
+    {
+      "bib": "277",
+      "name": "HUDRY Jean Francois",
+      "team": "",
+      "category": "V1H",
+      "rank": "17",
+      "nationality": "FR",
+      "time": "34:52:42",
+      "timediff": "46:44.0"
+    },
+    {
+      "bib": "75",
+      "name": "WEINMANN Fr\u00e9d\u00e9ric",
+      "team": "ANA HAGUENAU",
+      "category": "V2H",
+      "rank": "9",
+      "nationality": "FR",
+      "time": "35:11:46",
+      "timediff": "05:48.0"
+    },
+    {
+      "bib": "89",
+      "name": "PLANES Lionel",
+      "team": "UFO / AS CAVAILLON",
+      "category": "SEH",
+      "rank": "22",
+      "nationality": "FR",
+      "time": "35:45:49",
+      "timediff": "39:51.0"
+    },
+    {
+      "bib": "118",
+      "name": "EVEN Jean Yves",
+      "team": "REV 7",
+      "category": "V1H",
+      "rank": "18",
+      "nationality": "FR",
+      "time": "35:45:49",
+      "timediff": "39:51.0"
+    },
+    {
+      "bib": "242",
+      "name": "MICOL Martin",
+      "team": "UFO / AMBERIEU MARATHON",
+      "category": "SEH",
+      "rank": "23",
+      "nationality": "Fr",
+      "time": "35:45:49",
+      "timediff": "39:51.0"
+    },
+    {
+      "bib": "671",
+      "name": "BORDINI Roberto",
+      "team": "CASTAGNOLI",
+      "category": "V2H",
+      "rank": "10",
+      "nationality": "IT",
+      "time": "35:56:39",
+      "timediff": "50:41.0"
+    },
+    {
+      "bib": "683",
+      "name": "MONNIER SERGE",
+      "team": "",
+      "category": "SEH",
+      "rank": "24",
+      "nationality": "Fr",
+      "time": "36:11:01",
+      "timediff": "05:03.0"
+    },
+    {
+      "bib": "76",
+      "name": "ABRAHAM Francis",
+      "team": "",
+      "category": "V2H",
+      "rank": "11",
+      "nationality": "Fr",
+      "time": "36:27:05",
+      "timediff": "21:07.0"
+    },
+    {
+      "bib": "77",
+      "name": "LEFRANC Marie",
+      "team": "",
+      "category": "V1F",
+      "rank": "4",
+      "nationality": "Fr",
+      "time": "36:27:05",
+      "timediff": "21:07.0"
+    },
+    {
+      "bib": "129",
+      "name": "MUTTKE Klaus",
+      "team": "SSC HANAU-RODENBACH",
+      "category": "V1H",
+      "rank": "19",
+      "nationality": "DE",
+      "time": "36:42:51",
+      "timediff": "36:53.0"
+    },
+    {
+      "bib": "725",
+      "name": "DRESCHER Anke",
+      "team": "SSC HANAU-RODENBACH",
+      "category": "SEF",
+      "rank": "3",
+      "nationality": "DE",
+      "time": "36:42:51",
+      "timediff": "36:53.0"
+    },
+    {
+      "bib": "318",
+      "name": "SOLLER Jean-pierre",
+      "team": "WHITE HARRIERS",
+      "category": "V1H",
+      "rank": "20",
+      "nationality": "FR",
+      "time": "36:48:37",
+      "timediff": "42:39.0"
+    },
+    {
+      "bib": "361",
+      "name": "MARRACQ Nicolas",
+      "team": "UFO",
+      "category": "SEH",
+      "rank": "25",
+      "nationality": "Fr",
+      "time": "36:48:52",
+      "timediff": "42:54.0"
+    },
+    {
+      "bib": "410",
+      "name": "HENDRIKS Tom",
+      "team": "AV HAARLEMMERMEER",
+      "category": "V1H",
+      "rank": "21",
+      "nationality": "NL",
+      "time": "36:53:09",
+      "timediff": "47:11.0"
+    },
+    {
+      "bib": "652",
+      "name": "PORTE Manuel",
+      "team": "ESBUFECS",
+      "category": "V1H",
+      "rank": "22",
+      "nationality": "ES",
+      "time": "37:45:00",
+      "timediff": "39:02.0"
+    }
+  ],
+  "total": 67
+}
