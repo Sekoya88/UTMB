@@ -2,33 +2,43 @@
 
 Application web professionnelle pour analyser les données historiques de l'Ultra-Trail du Mont-Blanc (UTMB) de 2003 à 2017.
 
-## 🚀 Lancement avec Docker
+## 🚀 Lancement de l'application
 
-### 1. Build l'image Docker
+### Option 1 : Docker Compose (Recommandé) ⭐
 ```bash
-docker build -t utmb-viz .
+# Démarrer l'application
+docker compose up
+
+# Ou en arrière-plan
+docker compose up -d
+
+# Arrêter l'application
+docker compose down
+
+# Reconstruire et démarrer
+docker compose up --build
 ```
 
-### 2. Lancer le container
-```bash
-docker run -d -p 8080:80 --name utmb-viz utmb-viz
-```
-
-### 3. Accéder à l'application
-Ouvre ton navigateur sur: **http://localhost:8080**
-
-### 4. Arrêter le container
-```bash
-docker stop utmb-viz
-docker rm utmb-viz
-```
-
-### Alternative: Utiliser les scripts npm
+### Option 2 : Docker classique
 ```bash
 npm run docker:build    # Build l'image
 npm run docker:run      # Lance le container
 npm run docker:stop     # Arrête et supprime le container
 ```
+
+### Option 3 : Développement local (sans Docker)
+```bash
+npm install             # Installer les dépendances
+npm run dev            # Mode développement (hot reload)
+# ou
+npm run build          # Build de production
+npm run preview        # Prévisualiser le build
+```
+
+### 🌐 Accéder à l'application
+Ouvre ton navigateur sur: **http://localhost:4173**
+
+(En mode dev avec `npm run dev`, utilise le port affiché dans le terminal, généralement 5173)
 
 ---
 
@@ -78,8 +88,9 @@ Interface inspirée du site officiel UTMB avec:
 - **Styling**: TailwindCSS 3
 - **Charts**: Recharts 2
 - **Icons**: Lucide React
-- **Server**: Nginx (production)
-- **Container**: Docker multi-stage build
+- **Routing**: React Router v7
+- **Server**: Vite Preview (production)
+- **Container**: Docker + Docker Compose
 
 ## 📊 Données
 

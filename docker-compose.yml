@@ -1,0 +1,12 @@
+services:
+  utmb-viz:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: utmb-viz
+    ports:
+      - "4173:4173"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+
