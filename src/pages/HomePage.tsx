@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { raceData, getTotalParticipants } from '../data/processedData';
-import { LineChart, Line, BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { TrendingUp, Users, AlertCircle, Award, Mountain, ChevronRight, Calendar } from 'lucide-react';
+import { LineChart, Line, BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ComposedChart } from 'recharts';
+import { TrendingUp, Users, AlertCircle, Award, Mountain, ChevronRight, Calendar, MapPin, BookOpen, Activity } from 'lucide-react';
 import logo from '../logo/logo_transparent.png';
 import { useState, useEffect, useRef } from 'react';
 import '../components/RangeSlider.css';
@@ -121,6 +121,63 @@ export default function HomePage() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        {/* Quick Navigation */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <button
+            onClick={() => navigate('/course-map')}
+            className="group bg-gradient-to-br from-utmb-orange to-utmb-dark-orange rounded-2xl shadow-lg p-6 text-white hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-slide-in-left"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                  <MapPin className="w-8 h-8" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl font-bold mb-1">Parcours UTMB</h3>
+                  <p className="text-sm text-orange-100">Carte interactive GPS</p>
+                </div>
+              </div>
+              <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </button>
+
+          <button
+            onClick={() => navigate('/checkpoint-analysis')}
+            className="group bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl shadow-lg p-6 text-white hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-fade-in animation-delay-100"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                  <MapPin className="w-8 h-8" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl font-bold mb-1">Points de Passage</h3>
+                  <p className="text-sm text-purple-100">Analyse temporelle</p>
+                </div>
+              </div>
+              <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </button>
+
+          <button
+            onClick={() => navigate('/annexes')}
+            className="group bg-gradient-to-br from-utmb-blue to-utmb-dark-blue rounded-2xl shadow-lg p-6 text-white hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-slide-in-right animation-delay-200"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                  <BookOpen className="w-8 h-8" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl font-bold mb-1">Documentation</h3>
+                  <p className="text-sm text-blue-100">Guide des visualisations</p>
+                </div>
+              </div>
+              <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </button>
+        </div>
+
         {/* Filters Card */}
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 mb-8 animate-fade-in">
           <h2 className="text-lg font-semibold text-utmb-dark-blue mb-6 flex items-center gap-2">
@@ -135,16 +192,18 @@ export default function HomePage() {
               </span>
             </div>
             
-            <div className="relative pt-8 pb-2">
-              <div className="relative h-2 bg-slate-200 rounded-full">
+            <div className="relative pt-6 pb-4">
+              {/* Track background */}
+              <div className="relative h-3 bg-slate-200 rounded-full shadow-inner">
                 <div 
                   ref={rangeBarRef}
-                  className="absolute h-full bg-gradient-to-r from-utmb-blue to-utmb-orange rounded-full transition-all duration-300"
+                  className="absolute h-full bg-gradient-to-r from-utmb-blue via-purple-500 to-utmb-orange rounded-full transition-all duration-200 shadow-md"
                   style={{ zIndex: 1 }}
                 />
               </div>
               
-              <div className="absolute top-1 left-0 w-full" style={{ height: '24px' }}>
+              {/* Sliders container */}
+              <div className="absolute top-4 left-0 w-full" style={{ height: '32px' }}>
                 <input
                   type="range"
                   min="2003"
@@ -166,12 +225,26 @@ export default function HomePage() {
                 />
               </div>
               
-              <div className="flex justify-between mt-4 text-xs text-slate-500">
-                <span className="font-medium">2003</span>
+              {/* Year labels */}
+              <div className="flex justify-between mt-6 text-xs font-medium text-slate-600">
+                <span className="text-utmb-blue">2003</span>
                 <span>2007</span>
                 <span>2010</span>
                 <span>2013</span>
-                <span className="font-medium">2017</span>
+                <span className="text-utmb-orange">2017</span>
+              </div>
+              
+              {/* Selected range display */}
+              <div className="mt-4 flex items-center justify-center gap-3 text-sm">
+                <div className="flex items-center gap-2 bg-utmb-blue/10 px-4 py-2 rounded-lg border border-utmb-blue/20">
+                  <span className="text-slate-600">De:</span>
+                  <span className="font-bold text-utmb-blue text-lg">{selectedYears[0]}</span>
+                </div>
+                <span className="text-slate-400">→</span>
+                <div className="flex items-center gap-2 bg-utmb-orange/10 px-4 py-2 rounded-lg border border-utmb-orange/20">
+                  <span className="text-slate-600">À:</span>
+                  <span className="font-bold text-utmb-orange text-lg">{selectedYears[1]}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -256,8 +329,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Charts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Main Charts Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           <ChartCard title="Évolution de la Participation" icon={<TrendingUp className="w-5 h-5" />}>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={filteredData}>
@@ -328,6 +401,189 @@ export default function HomePage() {
               </BarChart>
             </ResponsiveContainer>
           </ChartCard>
+        </div>
+
+        {/* Advanced Analytics Section */}
+        <div className="mb-8 bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl shadow-lg border-2 border-purple-200 p-6 animate-fade-in">
+          <h2 className="text-2xl font-bold text-utmb-dark-blue mb-6 flex items-center gap-2">
+            <TrendingUp className="w-6 h-6 text-purple-600" />
+            Analyses Avancées
+          </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Scatter Plot: DNF Rate vs Average Time */}
+            <ChartCard title="Corrélation Temps Moyen vs Taux DNF" icon={<TrendingUp className="w-5 h-5" />}>
+              <ResponsiveContainer width="100%" height={300}>
+                <ScatterChart>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis 
+                    dataKey="avg_time_minutes" 
+                    name="Temps Moyen (min)" 
+                    stroke="#64748b"
+                    label={{ value: 'Temps Moyen (heures)', position: 'insideBottom', offset: -5 }}
+                    tickFormatter={(value) => `${(value / 60).toFixed(0)}h`}
+                  />
+                  <YAxis 
+                    dataKey="dnf_rate" 
+                    name="Taux DNF (%)" 
+                    stroke="#64748b"
+                    label={{ value: 'Taux DNF (%)', angle: -90, position: 'insideLeft' }}
+                  />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: 'white', border: '2px solid #9333ea', borderRadius: '12px' }}
+                    formatter={(value: number, name: string) => {
+                      if (name === 'Temps Moyen (min)') return `${(value / 60).toFixed(1)}h`;
+                      return `${value.toFixed(1)}%`;
+                    }}
+                    labelFormatter={(value, payload) => {
+                      if (payload && payload[0]) {
+                        return `Année ${payload[0].payload.year}`;
+                      }
+                      return '';
+                    }}
+                  />
+                  <Scatter 
+                    data={filteredData} 
+                    fill="#9333ea" 
+                    name="Course"
+                  >
+                    {filteredData.map((entry, index) => (
+                      <circle
+                        key={`dot-${index}`}
+                        r={8}
+                        fill={entry.dnf_rate > 40 ? '#ef4444' : entry.dnf_rate > 25 ? '#f59e0b' : '#10b981'}
+                        opacity={0.7}
+                      />
+                    ))}
+                  </Scatter>
+                </ScatterChart>
+              </ResponsiveContainer>
+              <div className="mt-4 flex gap-4 justify-center text-xs">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                  <span className="text-slate-600">DNF &lt; 25%</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <span className="text-slate-600">DNF 25-40%</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500" />
+                  <span className="text-slate-600">DNF &gt; 40%</span>
+                </div>
+              </div>
+            </ChartCard>
+
+            {/* Radar Chart: Performance Metrics */}
+            <ChartCard title="Profil Comparatif des Années" icon={<Award className="w-5 h-5" />}>
+              <ResponsiveContainer width="100%" height={300}>
+                <RadarChart data={filteredData.slice(0, 5).map(d => ({
+                  year: d.year.toString(),
+                  participation: (d.total_participants / 30) * 100, // Normalize to 100
+                  finishers: (d.finishers / 30) * 100,
+                  successRate: 100 - d.dnf_rate,
+                  speed: 100 - ((d.avg_time_minutes - 1200) / 20), // Normalize time
+                }))}>
+                  <PolarGrid stroke="#e2e8f0" />
+                  <PolarAngleAxis dataKey="year" stroke="#64748b" />
+                  <PolarRadiusAxis stroke="#64748b" angle={90} />
+                  <Radar 
+                    name="Taux de Réussite" 
+                    dataKey="successRate" 
+                    stroke="#10b981" 
+                    fill="#10b981" 
+                    fillOpacity={0.3}
+                    strokeWidth={2}
+                  />
+                  <Radar 
+                    name="Participation" 
+                    dataKey="participation" 
+                    stroke="#0066CC" 
+                    fill="#0066CC" 
+                    fillOpacity={0.2}
+                    strokeWidth={2}
+                  />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: 'white', border: '2px solid #0066CC', borderRadius: '12px' }}
+                  />
+                  <Legend />
+                </RadarChart>
+              </ResponsiveContainer>
+              <p className="text-xs text-slate-600 text-center mt-3">
+                Comparaison normalisée des 5 premières années sélectionnées
+              </p>
+            </ChartCard>
+
+            {/* Composed Chart: Multi-metric View */}
+            <ChartCard title="Vue Multi-Métriques" icon={<Activity className="w-5 h-5" />}>
+              <ResponsiveContainer width="100%" height={300}>
+                <ComposedChart data={filteredData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis dataKey="year" stroke="#64748b" />
+                  <YAxis yAxisId="left" stroke="#64748b" />
+                  <YAxis yAxisId="right" orientation="right" stroke="#64748b" />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: 'white', border: '2px solid #0066CC', borderRadius: '12px' }}
+                  />
+                  <Legend />
+                  <Bar 
+                    yAxisId="left"
+                    dataKey="total_participants" 
+                    fill="#0066CC" 
+                    name="Participants"
+                    radius={[8, 8, 0, 0]}
+                    opacity={0.8}
+                  />
+                  <Line 
+                    yAxisId="right"
+                    type="monotone" 
+                    dataKey="dnf_rate" 
+                    stroke="#FF6B35" 
+                    strokeWidth={3}
+                    name="Taux DNF (%)"
+                    dot={{ fill: '#FF6B35', r: 5 }}
+                  />
+                </ComposedChart>
+              </ResponsiveContainer>
+            </ChartCard>
+
+            {/* Participation Growth Rate */}
+            <ChartCard title="Taux de Croissance de la Participation" icon={<TrendingUp className="w-5 h-5" />}>
+              <ResponsiveContainer width="100%" height={300}>
+                <AreaChart data={filteredData.map((d, idx) => ({
+                  year: d.year,
+                  growth: idx > 0 
+                    ? ((d.total_participants - filteredData[idx - 1].total_participants) / filteredData[idx - 1].total_participants) * 100
+                    : 0
+                }))}>
+                  <defs>
+                    <linearGradient id="colorGrowth" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
+                      <stop offset="95%" stopColor="#10b981" stopOpacity={0.1}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis dataKey="year" stroke="#64748b" />
+                  <YAxis stroke="#64748b" />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: 'white', border: '2px solid #10b981', borderRadius: '12px' }}
+                    formatter={(value: number) => `${value.toFixed(1)}%`}
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="growth" 
+                    stroke="#10b981" 
+                    strokeWidth={3}
+                    fill="url(#colorGrowth)"
+                    name="Croissance (%)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+              <p className="text-xs text-slate-600 text-center mt-3">
+                Variation annuelle du nombre de participants
+              </p>
+            </ChartCard>
+          </div>
         </div>
 
         {/* Data Table */}
@@ -410,16 +666,16 @@ function StatCard({ icon, title, value, gradient, delay = '0s' }: StatCardProps)
   
   return (
     <div 
-      className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-slide-up"
+      className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-slide-up group"
       style={animationStyle}
     >
       <div className="flex items-center gap-4">
-        <div className={`w-14 h-14 bg-gradient-to-br ${gradient} rounded-xl flex items-center justify-center text-white shadow-md`}>
+        <div className={`w-14 h-14 bg-gradient-to-br ${gradient} rounded-xl flex items-center justify-center text-white shadow-md group-hover:animate-rotate-in group-hover:shadow-xl transition-all duration-300`}>
           {icon}
         </div>
         <div className="flex-1">
-          <p className="text-sm font-medium text-slate-600">{title}</p>
-          <p className="text-3xl font-bold text-utmb-dark-blue mt-1">{value}</p>
+          <p className="text-sm font-medium text-slate-600 group-hover:text-utmb-blue transition-colors">{title}</p>
+          <p className="text-3xl font-bold text-utmb-dark-blue mt-1 group-hover:scale-110 transition-transform duration-300">{value}</p>
         </div>
       </div>
     </div>
@@ -434,10 +690,10 @@ interface ChartCardProps {
 
 function ChartCard({ title, icon, children }: ChartCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-shadow duration-300 animate-fade-in">
+    <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-2xl hover:border-utmb-blue transition-all duration-300 animate-fade-in group">
       <div className="flex items-center gap-2 mb-4">
-        <div className="text-utmb-orange">{icon}</div>
-        <h3 className="text-lg font-bold text-utmb-dark-blue">{title}</h3>
+        <div className="text-utmb-orange group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">{icon}</div>
+        <h3 className="text-lg font-bold text-utmb-dark-blue group-hover:text-utmb-blue transition-colors">{title}</h3>
       </div>
       {children}
     </div>
