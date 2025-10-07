@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { raceData } from '../data/processedData';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Users, AlertCircle, Award, Mountain, ArrowLeft, Clock, TrendingUp, Trophy, Medal } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ScatterChart, Scatter, Cell, LineChart, Line, Area, AreaChart } from 'recharts';
+import { Users, AlertCircle, Award, Mountain, ArrowLeft, Clock, TrendingUp, Trophy, Medal, Timer, MapPin, Activity } from 'lucide-react';
 import logo from '../logo/logo_transparent.png';
 
 interface RaceParticipant {
@@ -174,8 +174,8 @@ export default function RaceDetailPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {podium[1] && (
-                <div className="order-2 md:order-1 transform md:translate-y-8">
-                  <div className="bg-gradient-to-br from-slate-300 to-slate-400 rounded-2xl p-6 text-slate-800 shadow-xl hover:scale-105 transition-transform">
+                <div className="order-2 md:order-1 transform md:translate-y-8 animate-slide-in-left animation-delay-100">
+                  <div className="bg-gradient-to-br from-slate-300 to-slate-400 rounded-2xl p-6 text-slate-800 shadow-xl hover:scale-110 hover:rotate-2 transition-all duration-300">
                     <div className="flex justify-center mb-4">
                       <div className="w-20 h-20 rounded-full bg-slate-200 flex items-center justify-center shadow-lg">
                         <Medal className="w-12 h-12 text-slate-600" />
@@ -196,8 +196,8 @@ export default function RaceDetailPage() {
               )}
 
               {podium[0] && (
-                <div className="order-1 md:order-2">
-                  <div className="bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 rounded-2xl p-8 text-yellow-900 shadow-2xl transform md:scale-110 hover:scale-115 transition-transform">
+                <div className="order-1 md:order-2 animate-scale-in">
+                  <div className="bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 rounded-2xl p-8 text-yellow-900 shadow-2xl transform md:scale-110 hover:scale-125 hover:rotate-3 transition-all duration-300 animate-glow">
                     <div className="flex justify-center mb-4">
                       <div className="w-24 h-24 rounded-full bg-yellow-200 flex items-center justify-center shadow-lg animate-pulse">
                         <Trophy className="w-16 h-16 text-yellow-700" />
@@ -218,8 +218,8 @@ export default function RaceDetailPage() {
               )}
 
               {podium[2] && (
-                <div className="order-3">
-                  <div className="bg-gradient-to-br from-orange-300 to-orange-500 rounded-2xl p-6 text-orange-900 shadow-xl hover:scale-105 transition-transform transform md:translate-y-12">
+                <div className="order-3 animate-slide-in-right animation-delay-200">
+                  <div className="bg-gradient-to-br from-orange-300 to-orange-500 rounded-2xl p-6 text-orange-900 shadow-xl hover:scale-110 hover:-rotate-2 transition-all duration-300 transform md:translate-y-12">
                     <div className="flex justify-center mb-4">
                       <div className="w-20 h-20 rounded-full bg-orange-200 flex items-center justify-center shadow-lg">
                         <Medal className="w-12 h-12 text-orange-700" />
@@ -299,6 +299,224 @@ export default function RaceDetailPage() {
               </BarChart>
             </ResponsiveContainer>
           </ChartCard>
+        </div>
+
+        {/* Advanced Analytics */}
+        <div className="mb-8 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl shadow-lg border-2 border-indigo-200 p-6 animate-fade-in">
+          <h2 className="text-2xl font-bold text-utmb-dark-blue mb-6 flex items-center gap-2">
+            <Activity className="w-6 h-6 text-indigo-600" />
+            Analyses Avancées de Performance
+          </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Time Distribution Histogram */}
+            <ChartCard title="Distribution des Temps de Course" icon={<Timer className="w-5 h-5" />}>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={(() => {
+                  if (!raceDetail) return [];
+                  // Create time buckets (in hours)
+                  const buckets: Record<number, number> = {};
+                  raceDetail.participants.forEach(p => {
+                    if (p.time && p.time !== '') {
+                      const parts = p.time.split(':');
+                      const hours = parseInt(parts[0]);
+                      const bucket = Math.floor(hours / 2) * 2; // 2-hour buckets
+                      buckets[bucket] = (buckets[bucket] || 0) + 1;
+                    }
+                  });
+                  return Object.entries(buckets)
+                    .map(([hour, count]) => ({ 
+                      range: `${hour}-${parseInt(hour) + 2}h`, 
+                      count 
+                    }))
+                    .sort((a, b) => parseInt(a.range) - parseInt(b.range));
+                })()}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis dataKey="range" stroke="#64748b" angle={-45} textAnchor="end" height={80} />
+                  <YAxis stroke="#64748b" label={{ value: 'Nombre de coureurs', angle: -90, position: 'insideLeft' }} />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: 'white', border: '2px solid #6366f1', borderRadius: '12px' }}
+                  />
+                  <Bar dataKey="count" radius={[8, 8, 0, 0]}>
+                    {(() => {
+                      const data = (() => {
+                        if (!raceDetail) return [];
+                        const buckets: Record<number, number> = {};
+                        raceDetail.participants.forEach(p => {
+                          if (p.time && p.time !== '') {
+                            const parts = p.time.split(':');
+                            const hours = parseInt(parts[0]);
+                            const bucket = Math.floor(hours / 2) * 2;
+                            buckets[bucket] = (buckets[bucket] || 0) + 1;
+                          }
+                        });
+                        return Object.entries(buckets)
+                          .map(([hour, count]) => ({ range: `${hour}-${parseInt(hour) + 2}h`, count }))
+                          .sort((a, b) => parseInt(a.range) - parseInt(b.range));
+                      })();
+                      return data.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={`hsl(${220 + index * 20}, 70%, 60%)`} />
+                      ));
+                    })()}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+              <p className="text-xs text-slate-600 text-center mt-3">
+                Répartition des coureurs par tranches de 2 heures
+              </p>
+            </ChartCard>
+
+            {/* Performance by Nationality - Top 10 */}
+            <ChartCard title="Top 10 Nationalités - Nombre de Finishers" icon={<TrendingUp className="w-5 h-5" />}>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart 
+                  data={(() => {
+                    if (!raceDetail) return [];
+                    const natCount: Record<string, number> = {};
+                    raceDetail.participants.forEach(p => {
+                      if (p.nationality && p.time && p.time !== '') {
+                        natCount[p.nationality] = (natCount[p.nationality] || 0) + 1;
+                      }
+                    });
+                    return Object.entries(natCount)
+                      .map(([nat, count]) => ({ nationality: nat, finishers: count }))
+                      .sort((a, b) => b.finishers - a.finishers)
+                      .slice(0, 10);
+                  })()}
+                  layout="vertical"
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis type="number" stroke="#64748b" />
+                  <YAxis dataKey="nationality" type="category" stroke="#64748b" width={50} />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: 'white', border: '2px solid #8b5cf6', borderRadius: '12px' }}
+                    formatter={(value: number) => [`${value} finishers`, 'Total']}
+                  />
+                  <Bar dataKey="finishers" radius={[0, 8, 8, 0]}>
+                    {(() => {
+                      if (!raceDetail) return [];
+                      const natCount: Record<string, number> = {};
+                      raceDetail.participants.forEach(p => {
+                        if (p.nationality && p.time && p.time !== '') {
+                          natCount[p.nationality] = (natCount[p.nationality] || 0) + 1;
+                        }
+                      });
+                      const data = Object.entries(natCount)
+                        .map(([nat, count]) => ({ nationality: nat, finishers: count }))
+                        .sort((a, b) => b.finishers - a.finishers)
+                        .slice(0, 10);
+                      
+                      return data.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={`hsl(${250 - index * 15}, 70%, 55%)`} />
+                      ));
+                    })()}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+              <p className="text-xs text-slate-600 text-center mt-3">
+                Classement des 10 pays avec le plus de finishers
+              </p>
+            </ChartCard>
+
+            {/* Finishing Rate Trend */}
+            <ChartCard title="Taux de Réussite (Top 200)" icon={<Award className="w-5 h-5" />}>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={(() => {
+                  if (!raceDetail) return [];
+                  const top200 = raceDetail.participants.slice(0, 200);
+                  const step = 20;
+                  const result = [];
+                  for (let i = 0; i < top200.length; i += step) {
+                    const segment = top200.slice(i, i + step);
+                    const finishers = segment.filter(p => p.time && p.time !== '').length;
+                    result.push({
+                      position: `${i + 1}-${Math.min(i + step, top200.length)}`,
+                      rate: (finishers / segment.length) * 100,
+                    });
+                  }
+                  return result;
+                })()}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis dataKey="position" stroke="#64748b" angle={-45} textAnchor="end" height={80} />
+                  <YAxis stroke="#64748b" domain={[0, 100]} />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: 'white', border: '2px solid #10b981', borderRadius: '12px' }}
+                    formatter={(value: number) => `${value.toFixed(1)}%`}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="rate" 
+                    stroke="#10b981" 
+                    strokeWidth={3}
+                    name="Taux de Réussite"
+                    dot={{ fill: '#10b981', r: 5 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+              <p className="text-xs text-slate-600 text-center mt-3">
+                Pourcentage de finishers par tranche de 20 positions
+              </p>
+            </ChartCard>
+
+            {/* Category Performance Comparison */}
+            <ChartCard title="Temps Moyen par Catégorie" icon={<Users className="w-5 h-5" />}>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={(() => {
+                  if (!raceDetail) return [];
+                  const categoryTimes: Record<string, { total: number; count: number }> = {};
+                  raceDetail.participants.forEach(p => {
+                    if (p.time && p.time !== '' && p.category) {
+                      const parts = p.time.split(':');
+                      const minutes = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+                      if (!categoryTimes[p.category]) {
+                        categoryTimes[p.category] = { total: 0, count: 0 };
+                      }
+                      categoryTimes[p.category].total += minutes;
+                      categoryTimes[p.category].count += 1;
+                    }
+                  });
+                  return Object.entries(categoryTimes)
+                    .map(([cat, data]) => ({
+                      category: cat,
+                      avgTime: data.total / data.count / 60, // Convert to hours
+                    }))
+                    .sort((a, b) => a.avgTime - b.avgTime);
+                })()}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis dataKey="category" stroke="#64748b" />
+                  <YAxis stroke="#64748b" label={{ value: 'Temps Moyen (h)', angle: -90, position: 'insideLeft' }} />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: 'white', border: '2px solid #0066CC', borderRadius: '12px' }}
+                    formatter={(value: number) => `${value.toFixed(1)}h`}
+                  />
+                  <Bar dataKey="avgTime" radius={[8, 8, 0, 0]}>
+                    {(() => {
+                      if (!raceDetail) return [];
+                      const categoryTimes: Record<string, { total: number; count: number }> = {};
+                      raceDetail.participants.forEach(p => {
+                        if (p.time && p.time !== '' && p.category) {
+                          const parts = p.time.split(':');
+                          const minutes = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+                          if (!categoryTimes[p.category]) {
+                            categoryTimes[p.category] = { total: 0, count: 0 };
+                          }
+                          categoryTimes[p.category].total += minutes;
+                          categoryTimes[p.category].count += 1;
+                        }
+                      });
+                      const data = Object.entries(categoryTimes)
+                        .map(([cat, data]) => ({ category: cat, avgTime: data.total / data.count / 60 }))
+                        .sort((a, b) => a.avgTime - b.avgTime);
+                      
+                      return data.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={`hsl(${200 - index * 15}, 70%, 50%)`} />
+                      ));
+                    })()}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </ChartCard>
+          </div>
         </div>
 
         {/* Participants Table */}
@@ -453,14 +671,14 @@ interface StatCardProps {
 
 function StatCard({ icon, title, value, gradient }: StatCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-2xl hover:scale-105 transition-all duration-300 animate-slide-up group">
       <div className="flex items-center gap-4">
-        <div className={`w-14 h-14 bg-gradient-to-br ${gradient} rounded-xl flex items-center justify-center text-white shadow-md`}>
+        <div className={`w-14 h-14 bg-gradient-to-br ${gradient} rounded-xl flex items-center justify-center text-white shadow-md group-hover:animate-rotate-in transition-all duration-300`}>
           {icon}
         </div>
         <div className="flex-1">
-          <p className="text-sm font-medium text-slate-600">{title}</p>
-          <p className="text-3xl font-bold text-utmb-dark-blue mt-1">{value}</p>
+          <p className="text-sm font-medium text-slate-600 group-hover:text-utmb-blue transition-colors">{title}</p>
+          <p className="text-3xl font-bold text-utmb-dark-blue mt-1 group-hover:scale-110 transition-transform duration-300">{value}</p>
         </div>
       </div>
     </div>
@@ -475,10 +693,10 @@ interface ChartCardProps {
 
 function ChartCard({ title, icon, children }: ChartCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-shadow duration-300">
+    <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-2xl hover:border-utmb-blue transition-all duration-300 group">
       <div className="flex items-center gap-2 mb-4">
-        <div className="text-utmb-orange">{icon}</div>
-        <h3 className="text-lg font-bold text-utmb-dark-blue">{title}</h3>
+        <div className="text-utmb-orange group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">{icon}</div>
+        <h3 className="text-lg font-bold text-utmb-dark-blue group-hover:text-utmb-blue transition-colors">{title}</h3>
       </div>
       {children}
     </div>
